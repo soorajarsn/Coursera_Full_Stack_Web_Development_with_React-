@@ -201,6 +201,9 @@
             <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
               <span class="carousel-control-next-icon"></span>
             </a>
+            <button class="btn btn-danger btn-sm" id="carouselButton">
+              <span id="carousel-button-icon" class="fa fa-pause"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -300,6 +303,23 @@
         </div>
       </div>
     </footer>
+    <script>
+      $(document).ready(function () {;
+        $("#mycarousel").carousel({ interval: 2000 });
+        console.log($("#mycarousel"));
+        $("#carouselButton").click(function () {
+          if ($("#carouselButton").children("span").hasClass("fa-pause")) {
+            $("#mycarousel").carousel("pause");
+            $("#carouselButton").children("span").removeClass("fa-pause");
+            $("#carouselButton").children("span").addClass("fa-play");
+          } else if ($("#carouselButton").children("span").hasClass("fa-play")) {
+            $("#mycarousel").carousel("cycle");
+            $("#carouselButton").children("span").removeClass("fa-play");
+            $("#carouselButton").children("span").addClass("fa-pause");
+          }
+        });
+      });
+    </script>
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
